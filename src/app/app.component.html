@@ -16,24 +16,24 @@
   </div>
 
   <div class="p-grid">
-    <div class="p-col-4">
+    <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
       <div></div>
     </div>
-    <div class="p-col-4">
+    <div class="p-col">
       <div class="light-text">
-        Actor Name
+        Actor Name {{isMobileDevice}}
       </div>
     </div>
-    <div class="p-col-4">
+    <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
       <div></div>
     </div>
   </div>
 
   <div class="p-grid">
-    <div class="p-col-4">
+    <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
       <div></div>
     </div>
-    <div class="p-col-4">
+    <div class="p-col">
       <div>
         <p-autoComplete [(ngModel)]="selectedActor" [suggestions]="filteredActors" (onclear)="onClear()"
           (completeMethod)="filterActors($event)" (onSelect)="doOnSelect($event)" [style]="{'width':'95%'}"
@@ -41,23 +41,23 @@
         </p-autoComplete>
       </div>
     </div>
-    <div class="p-col-4">
+    <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
       <div></div>
     </div>
   </div>
 </div>
 
 
-<div class="p-grid">
-  <div class="p-col-4">
+<div class="p-grid ui-grid-responsive">
+  <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
     <div></div>
   </div>
-  <div class="p-col-4">
+  <div class="p-col">
     <div *ngIf="showNoDataMessage" class="light-text">
       Could not find data for this actor. Please try again in some time. 
     </div>
   </div>
-  <div class="p-col-4">
+  <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
     <div></div>
   </div>
 </div>

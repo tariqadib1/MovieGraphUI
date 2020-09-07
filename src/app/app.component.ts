@@ -10,7 +10,7 @@ import AllGraphData from '../assets/json/ActorMovieRatingsData.json';
 export class AppComponent {
   title = 'MovieGraphUI';
 
-
+  isMobileDevice: boolean = window.navigator.userAgent.toLowerCase().includes("mobi");
   actors: string[] = [];
   selectedActor: string;
   filteredActors: string[] = [];
@@ -76,6 +76,7 @@ export class AppComponent {
     }
     this.showNoDataMessage = true;
     this.chartData = null;
+    //Record actor name in json so that we can add it to the list
   }
 
 }
