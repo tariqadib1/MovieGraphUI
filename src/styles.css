@@ -4,12 +4,12 @@
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       }
       footer {
-        position: fixed;
+        position: relative;
         left: 0;
         bottom: 0;
         width: 100%;
         text-align: center;
-        margin-bottom: 10vh;
+        margin-bottom: 5vh;
       }
       .light-text{
         color: lightslategray;
