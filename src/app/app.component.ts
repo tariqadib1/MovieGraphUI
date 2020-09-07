@@ -68,7 +68,8 @@ export class AppComponent {
               label: graphData.ActorName,
               data: graphDataset,
               fill: false,
-              borderColor: '#4bc0c0'
+              borderColor: '#1E88E5',
+              backgroundColor: '#42A5F5',
             }
           ]
         }
