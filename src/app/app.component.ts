@@ -24,6 +24,7 @@ export class AppComponent {
     }
     this.options = {
       scales: {
+        xAxes: [{ ticks: { autoSkip: false } }],
         yAxes: [{ ticks: { beginAtZero: true, min: 0, max: 10 } }]
       }
     }
