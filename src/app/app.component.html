@@ -1,0 +1,63 @@
+<div>
+  <div class="p-grid">
+    <div class="p-col-12">
+      <div></div>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <div class="view-box">
+          <div *ngIf="chartData && !showNoDataMessage">
+            <p-chart type="line" [data]="chartData" [options]="options" width="90vw" height="50vh"></p-chart>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-4">
+      <div></div>
+    </div>
+    <div class="p-col-4">
+      <div class="light-text">
+        Actor Name
+      </div>
+    </div>
+    <div class="p-col-4">
+      <div></div>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-4">
+      <div></div>
+    </div>
+    <div class="p-col-4">
+      <div>
+        <p-autoComplete [(ngModel)]="selectedActor" [suggestions]="filteredActors" (onclear)="onClear()"
+          (completeMethod)="filterActors($event)" (onSelect)="doOnSelect($event)" [style]="{'width':'95%'}"
+          [inputStyle]="{'width': '100%'}">
+        </p-autoComplete>
+      </div>
+    </div>
+    <div class="p-col-4">
+      <div></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="p-grid">
+  <div class="p-col-4">
+    <div></div>
+  </div>
+  <div class="p-col-4">
+    <div *ngIf="showNoDataMessage" class="light-text">
+      Could not find data for this actor. Please try again in some time. 
+    </div>
+  </div>
+  <div class="p-col-4">
+    <div></div>
+  </div>
+</div>
