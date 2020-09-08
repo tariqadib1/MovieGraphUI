@@ -29,6 +29,18 @@
   </div>
 </div>
 
+<div class="p-grid" *ngIf="chartData && !showNoDataMessage">
+  <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
+    <div></div>
+  </div>
+  <div class="p-col">
+    <div><p-selectButton [options]="sortingOptions" [(ngModel)]="sortedBy" (onChange)="sort()"></p-selectButton></div>
+  </div>
+  <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
+    <div></div>
+  </div>
+</div>
+
 <div class="p-grid">
   <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
     <div></div>
@@ -42,6 +54,7 @@
     <div></div>
   </div>
 </div>
+
 <div>
   <div *ngIf="chartData && !showNoDataMessage">
     <p-chart type="horizontalBar" [data]="chartData" [options]="options" height="{{movieCount * 3}}vh"></p-chart>

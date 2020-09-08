@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import ActorMasterData from '../assets/json/ActorsMasterData.json';
 import AllGraphData from '../assets/json/ActorMovieRatingsData.json';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'MovieGraphUI';
@@ -14,10 +15,13 @@ export class AppComponent {
   actors: string[] = [];
   selectedActor: string;
   filteredActors: string[] = [];
+  movieData: any;
   chartData: any;
   options: any;
   showNoDataMessage: boolean = false;
+  sortedBy = "Year";
   movieCount: number = 0;
+  sortingOptions: SelectItem[] = [];
 
   ngOnInit() {
     for (let actor of ActorMasterData) {
@@ -29,6 +33,8 @@ export class AppComponent {
         yAxes: [{ ticks: { autoSkip: false } }]
       }
     }
+    this.sortingOptions.push({label:'Year', value:'Year'});
+    this.sortingOptions.push({label:'Rating', value:'Rating'});
   }
 
   filterActors(event) {
@@ -48,6 +54,34 @@ export class AppComponent {
     //this.chartData = null;
   }
 
+  sort() {
+    
+    let graphLabels = []
+    let graphDataset = []
+
+    if(this.sortedBy == "Year")
+      this.movieData.MovieDetails.sort((a, b) => { return a.Year - b.Year });
+    else
+      this.movieData.MovieDetails.sort((a, b) => { return b.MovieRating - a.MovieRating });
+
+    for (let movieDetail of this.movieData.MovieDetails) {
+      graphLabels.push(movieDetail.MovieName + " (" + movieDetail.Year + ")");
+      graphDataset.push(movieDetail.MovieRating);
+    }
+    this.chartData = {
+      labels: graphLabels,
+      datasets: [
+        {
+          label: this.movieData.ActorName,
+          data: graphDataset,
+          fill: false,
+          borderColor: '#1E88E5',
+          backgroundColor: '#42A5F5',
+        }
+      ]
+    }
+  }
+
   doOnSelect(event) 
   {
     this.movieCount = 0;
@@ -63,6 +97,7 @@ export class AppComponent {
           graphLabels.push(movieDetail.MovieName + " (" + movieDetail.Year + ")");
           graphDataset.push(movieDetail.MovieRating);
         }
+        this.movieData = graphData;
         this.movieCount = graphLabels.length;
         this.chartData = {
           labels: graphLabels,

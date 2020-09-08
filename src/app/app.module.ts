@@ -6,6 +6,7 @@ import { FormsModule }   from '@angular/forms';
 import { AutoCompleteModule }   from 'primeng/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule } from 'primeng/chart';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ChartModule } from 'primeng/chart';
     FormsModule,
     AutoCompleteModule,
     BrowserAnimationsModule,
-    ChartModule
+    ChartModule,
+    SelectButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
