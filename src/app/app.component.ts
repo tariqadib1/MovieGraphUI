@@ -17,15 +17,16 @@ export class AppComponent {
   chartData: any;
   options: any;
   showNoDataMessage: boolean = false;
+  movieCount: number = 0;
 
   ngOnInit() {
     for (let actor of ActorMasterData) {
       this.actors.push(actor.Name);
     }
-    this.options = {
+    this.options = {barValueSpacing: 10,
       scales: {
-        xAxes: [{ ticks: { autoSkip: false } }],
-        yAxes: [{ ticks: { beginAtZero: true, min: 0, max: 10 } }]
+        xAxes: [{ ticks: { beginAtZero: true, min: 0, max: 10 } }],
+        yAxes: [{ ticks: { autoSkip: false } }]
       }
     }
   }
@@ -49,7 +50,9 @@ export class AppComponent {
 
   doOnSelect(event) 
   {
+    this.movieCount = 0;
     this.selectedActor = event;
+    
     for (let graphData of AllGraphData) {
       if (graphData.ActorName == this.selectedActor) {
         this.showNoDataMessage = false;
@@ -60,7 +63,7 @@ export class AppComponent {
           graphLabels.push(movieDetail.MovieName + " (" + movieDetail.Year + ")");
           graphDataset.push(movieDetail.MovieRating);
         }
-
+        this.movieCount = graphLabels.length;
         this.chartData = {
           labels: graphLabels,
           datasets: [

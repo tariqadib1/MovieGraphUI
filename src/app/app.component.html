@@ -1,63 +1,49 @@
-<div>
-  <div class="p-grid">
-    <div class="p-col-12">
-      <div></div>
+<div class="p-grid">
+  <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
+    <div></div>
+  </div>
+  <div class="p-col">
+    <div class="light-text">
+      Actor Name
     </div>
   </div>
-
-  <div class="p-grid">
-    <div class="p-col-12">
-      <div class="view-box">
-          <div *ngIf="chartData && !showNoDataMessage">
-            <p-chart type="horizontalBar" [data]="chartData" [options]="options" height="80vh"></p-chart>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="p-grid">
-    <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
-      <div></div>
-    </div>
-    <div class="p-col">
-      <div class="light-text">
-        Actor Name
-      </div>
-    </div>
-    <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
-      <div></div>
-    </div>
-  </div>
-
-  <div class="p-grid">
-    <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
-      <div></div>
-    </div>
-    <div class="p-col">
-      <div>
-        <p-autoComplete [(ngModel)]="selectedActor" [suggestions]="filteredActors" (onclear)="onClear()"
-          (completeMethod)="filterActors($event)" (onSelect)="doOnSelect($event)" [style]="{'width':'95%'}"
-          [inputStyle]="{'width': '100%'}">
-        </p-autoComplete>
-      </div>
-    </div>
-    <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
-      <div></div>
-    </div>
+  <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
+    <div></div>
   </div>
 </div>
 
+<div class="p-grid">
+  <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
+    <div></div>
+  </div>
+  <div class="p-col">
+    <div>
+      <p-autoComplete [(ngModel)]="selectedActor" [suggestions]="filteredActors" (onclear)="onClear()"
+        (completeMethod)="filterActors($event)" (onSelect)="doOnSelect($event)" [style]="{'width':'95%'}"
+        [inputStyle]="{'width': '100%'}">
+      </p-autoComplete>
+    </div>
+  </div>
+  <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
+    <div></div>
+  </div>
+</div>
 
-<div class="p-grid ui-grid-responsive">
-  <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
+<div class="p-grid">
+  <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
     <div></div>
   </div>
   <div class="p-col">
     <div *ngIf="showNoDataMessage" class="light-text">
-      Could not find data for this actor. Please try again in some time. 
+      Could not find data for this actor. Please try again in some time.
     </div>
   </div>
-  <div [ngClass] = "{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
+  <div [ngClass]="{ 'p-col-2': isMobileDevice, 'p-col-4': !isMobileDevice }">
     <div></div>
+  </div>
+</div>
+<div>
+  <div *ngIf="chartData && !showNoDataMessage">
+    <p-chart type="horizontalBar" [data]="chartData" [options]="options" height="{{movieCount * 3}}vh"></p-chart>
   </div>
 </div>
